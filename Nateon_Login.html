@@ -1,0 +1,365 @@
+`<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Nateon_Login.css" />
+    <title>네이트온 메일 로그인</title>
+    <style>
+      * {
+          margin:0;
+          padding:0;
+          list-style: none;
+      }
+      .screen_out {
+          display: none;
+      }
+      /* header */
+      header {
+          background-color:#efefef;
+          overflow:hidden;
+          border-bottom: 1px solid #9f9f9f;
+          min-width:1299px;
+      }
+      header li {
+          float: left;
+          background:0 0 / 950px url(img/snb_new_nate.png);
+          transition: ease all .3s;
+      }
+      header li:nth-child(2) {
+          background-position-x: -78px;
+      }
+      header li:nth-child(3) {
+          background-position-x: -316px;
+      }
+      header li:nth-child(4) {
+          background-position-x: -395px;
+      }
+      header li:hover {
+          background-position-y:-50px;
+      }
+      header a {
+          display:block;
+          height:34px;
+          width:78px;
+          text-indent: -9999px;
+      }
+      /* main */
+      main {
+          height:2214px;
+          min-width:1299px;
+          background:no-repeat center / 1299px url(img/login_new3.png);
+          padding-top:82px;
+          box-sizing: border-box;
+          border-bottom: 1px solid #eee;
+      }
+      main::before {
+          content:"";
+          background-color: #f2f2f2;
+          position:absolute;
+          width:100%;
+          height:400px;
+          top:35px;
+          z-index: -1;
+      }
+      main::after {
+          content:"";
+          top:1022px;
+          height:529px;
+          width:100%;
+          border-top:1px solid #eee;
+          border-bottom:1px solid #eee;
+          position:absolute;
+          z-index: -1;
+      }
+      main>div {
+          width:440px;
+          margin:auto;
+          border-radius: 5px;
+          box-shadow: 0.5px 0.5px 7px 1px rgba(163, 163, 163, 0.3);
+          background-color: #fff;
+          padding-bottom: 39px;
+          position:relative;
+      }
+      main a {
+          color:#999;
+          font-size:12px;
+      }
+      main a span {
+          color:#666;
+          font-weight: bolder;
+      }
+      main h1 {
+          padding: 32px;
+      }
+      main h1 a {
+          display:block;
+          width:64px;
+          height:18px;
+          text-indent: -9999px;
+          overflow: hidden;
+          background: 0 0 / contain url(img/logo_new.png);
+          margin:auto;
+      }
+      main fieldset {
+          border:none;
+          margin:0 39px;
+      }
+      main .txt {
+          display: none;
+      }
+      main .txt_id {
+          box-sizing: border-box;
+          display: block;
+          position:absolute;
+          width:218px;
+          height:115px;
+          background:0 0 / 218px url(img/bg_login_id.png);
+          margin-top:-165px;
+          font-size: 11px;
+          padding:20px 12px 0;
+      }
+      main input:focus+.txt_id {
+          display: block;
+      }
+      main .txt_id strong {
+          color:#569bd2;
+      }
+      main .txt_id p:nth-child(2) {
+          color:red;
+          margin-top:5px;
+      }
+      main .txt_id button {
+          border:none;
+          background: transparent;
+          text-indent: -9999px;
+          overflow: hidden;
+          position: absolute;
+          width:9px;
+          height:9px;
+          cursor: pointer;
+          top:8px;
+          right:8px;
+      }
+      main .remember {
+          display: block;
+          position:absolute;
+          border:1px solid #f5695e;
+          padding:8px;
+          width: 153px;
+          height: 45px;
+          font-size:11px;
+          left:0;
+          top:0;
+          color:#666;
+          background-color: #fff;
+      }
+      main .remember a {
+          color:#f5695e;
+          font-size:11px;
+      }
+      main .remember a::after {
+          content:"";
+          border-left:4px solid #f43b3b;
+          border-top:3px solid transparent;
+          border-bottom: 3px solid transparent;
+          position:absolute;
+          margin:5px 0 0 2px;
+      }
+      main .remember button {
+          border:none;
+          background: transparent;
+          text-indent: -9999px;
+          overflow: hidden;
+          position: absolute;
+          width:9px;
+          height:9px;
+          cursor: pointer;
+          background: 0 0 / 9px url(img/bg_close.png);
+          top:5px;
+          right:5px;
+      }
+      main label+input {
+          border:1px solid #e6e6e6;
+          width:345px;
+          height:49px;
+          display: block;
+          padding-left:15px;
+          font-size: 14px;
+          color: #8c8b90;
+          outline:none;
+          box-sizing: border-box;
+      }
+      main label+input:focus {
+          border:2px solid #fa4647;
+          border-radius: 4px;
+          text-indent: -9999px;
+      }
+      main #user_pw {
+          margin:9px 0 12px;
+      }
+      main #remember {
+          position: absolute;
+          margin-top:5px;
+      }
+      main label[for="remember"] {
+          color:color: rgb(102, 102, 102);
+          font-size: 12px;
+          padding-left:19px;
+      }
+      main input[type="submit"] {
+          background-color: #fa4647;
+          border:none;
+          color:#fff;
+          font-weight: bold;
+          border-radius:2px;
+          border:none;
+          display: block;
+          width:100%;
+          height:50px;
+          cursor: pointer;
+          margin:25px 0 38px;
+      }
+      main p+a {
+          font-size:11px;
+          float:right;
+          margin-top:5px;
+      }
+      main input+:checked~p {
+          display: block;
+      }
+      main ul {
+          overflow: hidden;
+          justify-content: center;
+          display: flex;
+          padding-bottom: 35px;
+      }
+      main li {
+          margin:0 12px;
+      }
+      main li:not(:last-child)::after {
+          content:"";
+          border-left:1px solid #e2e2e2;
+          position:absolute;
+          height:11px;
+          margin:7px 0 0 11px;
+      }
+      /* footer */
+      footer {
+          min-width:1299px;
+      }
+      footer div{
+          width:660px;
+          position:relative;
+          margin:100px auto;
+      }
+      footer h2 {
+          font-family: 'Noto Sans KR';
+          font-weight: 400;
+          font-size:;
+      }
+      footer address {
+          font-style: normal;
+          color:#aaa;
+          font-size: 12px;
+          padding-top:7px;
+      }
+      footer ul {
+          position:absolute;
+          right:0;
+          top:5px;
+          display: flex;
+      }
+      footer a {
+          display: block;
+          width:200px;
+          height:55px;
+          background:420px url(img/login_footer.gif);
+          text-indent: -9999px;
+          overflow: hidden;
+          margin-left:20px;
+      }
+      footer li:nth-child(2) a {
+          background-position-x: -220px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <h2 class="screen_out">네이트메일 주요서비스</h2>
+        <nav>
+          <ul>
+            <li><a href="#">네이트 홈</a></li>
+            <li><a href="#">메일</a></li>
+            <li><a href="#">문자</a></li>
+            <li><a href="#">주소록</a></li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <div>
+          <h1><a href="#">네이트메일 로그인</a></h1>
+          <form>
+            <fieldset>
+              <legend class="screen_out">로그인정보</legend>
+              <label for="user_id" class="screen_out">아이디</label>
+              <input
+                id="user_id"
+                type="text"
+                name="user_id"
+                placeholder="네이트 ID"
+              />
+              <div class="txt txt_id">
+                <p>
+                  <strong>엠파스, 라이코스, 넷츠고</strong> 아이디는<br />
+                  계정까지 모두 입력 해주세요.
+                </p>
+                <p>
+                  예) empal 메일의 경우<br />
+                  @empas.com을 입력해주세요
+                </p>
+                <button>닫기</button>
+              </div>
+              <label for="user_pw" class="screen_out">비밀번호</label>
+              <input
+                id="user_pw"
+                type="password"
+                name="user_pw"
+                placeholder="네이트 비밀번호"
+              />
+              <input type="checkbox" id="remember" name="remember" />
+              <label for="remember">로그인유지</label>
+              <p class="txt remember">
+                개인정보 보호를 위해<br />개인PC에서만<br />사용해 주세요.
+                <a href="#">도움말보기</a> <button>닫기</button>
+              </p>
+              <a href="#">IP보안 <span>ON</span></a>
+              <input type="submit" value="로그인" />
+            </fieldset>
+            <ul>
+              <li><a href="#">아이디 찾기</a></li>
+              <li><a href="#">비밀번호 찾기</a></li>
+              <li><a href="#">회원가입</a></li>
+            </ul>
+          </form>
+        </div>
+      </main>
+      <footer>
+        <div>
+          <h2>네이트메일 App</h2>
+          <ul>
+            <li><a href="#">Android App 바로가기</a></li>
+            <li><a href="#">Ios App 바로가기</a></li>
+          </ul>
+          <address>&copy; SK Commications</address>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
